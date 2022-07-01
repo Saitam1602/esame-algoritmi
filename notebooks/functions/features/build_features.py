@@ -7,10 +7,9 @@ def encode_categorical_data(df):
     oe = OrdinalEncoder()
 
     categorical_columns = df.select_dtypes(include=['object']).columns.tolist()
-
     for c in categorical_columns:
         df[[c]] = oe.fit_transform(df[[c]])
-
+        print(df[[c]])
     return df
 
 def get_best_correlation_columns(df, column, threshold=.5):
