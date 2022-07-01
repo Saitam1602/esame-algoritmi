@@ -25,7 +25,7 @@ def load_data(path):
     df.KitchenQual = df.KitchenQual.dropna()
     df.Functional = df.Functional.dropna()
     df.Fireplaces = df.Fireplaces.fillna(0)
-    df.FireplaceQu= df.FireplaceQu.fillna(0)
+    df.FireplaceQu= df.FireplaceQu.fillna("No Fireplace")
     df.GarageType = df.GarageType.fillna("No garage")
     df.GarageYrBlt = df.GarageYrBlt.fillna(df.GarageYrBlt.mean())
     df.GarageFinish = df.GarageFinish.fillna("No garage")
