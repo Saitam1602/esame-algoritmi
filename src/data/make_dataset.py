@@ -4,7 +4,6 @@ def load_data(path):
     # Pulizia generale
     df = pd.read_csv(path)
     df.drop(["Utilities"], axis=1)
-    df.drop(["Utilities"], axis=1)
     df.Alley = df.Alley.fillna("No alley access")
     df.LotFrontage = df.LotFrontage.fillna(round(df.LotFrontage.mean(),1))
     df.Exterior1st = df.Exterior1st.dropna()
@@ -38,9 +37,10 @@ def load_data(path):
     df.SaleType = df.SaleType.dropna()
 
     # Outlier
-    df.SalePrice.sort_values(ascending=False)
+    if 'SalePrice' in df.columns.tolist():
+        df.SalePrice.sort_values(ascending=False)
 
-    to_remove = df[df.SalePrice > 730000].index
-    df.drop(to_remove)
+        to_remove = df[df.SalePrice > 730000].index
+        df.drop(to_remove)
 
     return df

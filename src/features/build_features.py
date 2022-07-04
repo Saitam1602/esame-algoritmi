@@ -3,13 +3,12 @@ import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 
 
-def encode_categorical_data(df):
-    oe = OrdinalEncoder()
+def multi_ordinal_encoder(df, ordinal_encoder):
 
     categorical_columns = df.select_dtypes(include=['object']).columns.tolist()
 
     for c in categorical_columns:
-        df[[c]] = oe.fit_transform(df[[c]])
+        df[[c]] = ordinal_encoder.fit_transform(df[[c]])
 
     return df
 
