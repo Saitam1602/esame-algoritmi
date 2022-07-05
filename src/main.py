@@ -11,13 +11,6 @@ print("Preprocessing")
 path = "../data/raw/test.csv"
 df = load_data(path)
 
-# print(df['MSZoning'].unique())
-print(df.isna().sum().values)
-print(df.isna().sum()[20:])
-print(df.GarageCars.unique())
-print(df.GarageCars.mode())
-exit()
-
 # Encoding
 print("Encoding")
 oe = OrdinalEncoder()

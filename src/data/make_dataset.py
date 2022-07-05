@@ -3,7 +3,7 @@ import pandas as pd
 def load_data(path):
     # Pulizia generale
     df = pd.read_csv(path)
-    df.drop(["Utilities"], axis=1)
+    df = df.drop(["Utilities"], axis=1)
     df.Alley = df.Alley.fillna("No alley access")
     df.LotFrontage = df.LotFrontage.fillna(round(df.LotFrontage.mean(),1))
     df.Exterior1st = df.Exterior1st.fillna("Other")
@@ -11,7 +11,7 @@ def load_data(path):
     df.MasVnrType = df.MasVnrType.fillna("None")
     df.MasVnrArea = df.MasVnrArea.fillna(round(df.MasVnrArea.mean(),1))
     df.MSZoning = df.MSZoning.fillna("No info")
-    df.BsmtQual = df.BsmtQual.fillna("No Basement") # nan in NA -> no basement
+    df.BsmtQual = df.BsmtQual.fillna("No Basement") 
     df.BsmtCond = df.BsmtCond.fillna("No Basement")
     df.BsmtExposure = df.BsmtExposure.fillna("No Basement")
     df.BsmtFinType1 = df.BsmtFinType1.fillna("No Basement")
@@ -26,6 +26,7 @@ def load_data(path):
     df.Functional = df.Functional.fillna("Typ")
     df.Fireplaces = df.Fireplaces.fillna(0)
     df.FireplaceQu= df.FireplaceQu.fillna("No Fireplace")
+    df.GarageArea = df.GarageArea.fillna(round(df.GarageArea.mean(),1))
     df.GarageType = df.GarageType.fillna("No garage")
     df.GarageYrBlt = df.GarageYrBlt.fillna(df.GarageYrBlt.mean())
     df.GarageFinish = df.GarageFinish.fillna("No garage")
@@ -42,6 +43,6 @@ def load_data(path):
         df.SalePrice.sort_values(ascending=False)
 
         to_remove = df[df.SalePrice > 730000].index
-        df.drop(to_remove)
+        df = df.drop(to_remove)
 
     return df
