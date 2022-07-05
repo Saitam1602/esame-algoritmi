@@ -27,3 +27,8 @@ def choose_columns(df, columns):
     for c in columns:
         df_new[[c]] = df[[c]]
     return df_new
+
+def get_best_column_list():
+    return ['OverallQual', 'GrLivArea', 'GarageCars', 'ExterQual', 'GarageArea',
+       'TotalBsmtSF', '1stFlrSF', 'BsmtQual', 'KitchenQual', 'FullBath',
+       'TotRmsAbvGrd', 'YearBuilt', 'YearRemodAdd']
